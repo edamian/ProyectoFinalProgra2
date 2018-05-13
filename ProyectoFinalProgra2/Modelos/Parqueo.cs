@@ -8,22 +8,22 @@ namespace ProyectoFinalProgra2.Modelos
 {
     class Parqueo
     {
-        public int id { get; set; }
-        public int lugares { get; set; }
-        public String nombre { get; set; }
+        public int Id { get; set; }
+        public int Lugares { get; set; }
+        public String Nombre { get; set; }
 
         public Parqueo ()
         {
-            id = 0;
-            lugares = 0;
-            nombre = String.Empty;
+            Id = 0;
+            Lugares = 0;
+            Nombre = String.Empty;
         }
 
         public Parqueo(int id, int lugares, String nombre)
         {
-            id = id;
-            lugares = lugares;
-            nombre = nombre;
+            Id = id;
+            Lugares = lugares;
+            Nombre = nombre;
         }
     }
 }

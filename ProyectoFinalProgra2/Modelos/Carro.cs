@@ -8,19 +8,19 @@ namespace ProyectoFinalProgra2.Modelos
 {
     class Carro
     {
-        public int idCarro { get; set; }
-        public String placa { get; set; }
+        public int IdCarro { get; set; }
+        public String Placa { get; set; }
 
         public Carro ()
         {
-            idCarro = 0;
-            placa = String.Empty;
+            IdCarro = 0;
+            Placa = String.Empty;
         }
 
         public Carro(int idCarro, String placa)
         {
-            idCarro = idCarro;
-            placa = placa;
+            IdCarro = idCarro;
+            Placa = placa;
         }
 
     }

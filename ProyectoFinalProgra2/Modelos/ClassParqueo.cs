@@ -8,14 +8,14 @@ namespace ProyectoFinalProgra2.Modelos
 {
     class ClassParqueo
     {
-        public int id { get; set; }
-        public int idCarro { get; set; }
-        public int idParqueo { get; set; }
+        public int Id { get; set; }
+        public int IdCarro { get; set; }
+        public int IdParqueo { get; set; }
 
         public ClassParqueo (int idCarro, int idParqueo)
         {
-            idCarro = idCarro;
-            idParqueo = idParqueo;
+            IdCarro = idCarro;
+            IdParqueo = idParqueo;
         }
     }
 }

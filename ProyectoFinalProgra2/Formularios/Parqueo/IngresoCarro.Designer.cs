@@ -33,6 +33,18 @@
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnIngresarParqueo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.grpBoxMotos = new System.Windows.Forms.GroupBox();
+            this.grpBoxCamiones = new System.Windows.Forms.GroupBox();
+            this.grpBoxVehiculos = new System.Windows.Forms.GroupBox();
+            this.panelMotos = new System.Windows.Forms.TableLayoutPanel();
+            this.panelCamiones = new System.Windows.Forms.TableLayoutPanel();
+            this.panelVehiculos = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.grpBoxMotos.SuspendLayout();
+            this.grpBoxCamiones.SuspendLayout();
+            this.grpBoxVehiculos.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 49);
+            this.label2.Location = new System.Drawing.Point(26, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 1;
@@ -55,14 +67,14 @@
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(100, 41);
+            this.txtPlaca.Location = new System.Drawing.Point(69, 76);
             this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(250, 20);
+            this.txtPlaca.Size = new System.Drawing.Size(304, 20);
             this.txtPlaca.TabIndex = 2;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(19, 272);
+            this.btnCancelar.Location = new System.Drawing.Point(701, 69);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 3;
@@ -72,7 +84,7 @@
             // 
             // btnIngresarParqueo
             // 
-            this.btnIngresarParqueo.Location = new System.Drawing.Point(274, 272);
+            this.btnIngresarParqueo.Location = new System.Drawing.Point(471, 69);
             this.btnIngresarParqueo.Name = "btnIngresarParqueo";
             this.btnIngresarParqueo.Size = new System.Drawing.Size(75, 23);
             this.btnIngresarParqueo.TabIndex = 4;
@@ -80,18 +92,115 @@
             this.btnIngresarParqueo.UseVisualStyleBackColor = true;
             this.btnIngresarParqueo.Click += new System.EventHandler(this.btnIngresarParqueo_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.grpBoxVehiculos);
+            this.panel1.Controls.Add(this.grpBoxCamiones);
+            this.panel1.Controls.Add(this.grpBoxMotos);
+            this.panel1.Location = new System.Drawing.Point(16, 134);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(989, 500);
+            this.panel1.TabIndex = 5;
+            // 
+            // grpBoxMotos
+            // 
+            this.grpBoxMotos.Controls.Add(this.panelMotos);
+            this.grpBoxMotos.Location = new System.Drawing.Point(20, 26);
+            this.grpBoxMotos.Name = "grpBoxMotos";
+            this.grpBoxMotos.Size = new System.Drawing.Size(432, 186);
+            this.grpBoxMotos.TabIndex = 0;
+            this.grpBoxMotos.TabStop = false;
+            this.grpBoxMotos.Text = "Motocicletas";
+            // 
+            // grpBoxCamiones
+            // 
+            this.grpBoxCamiones.Controls.Add(this.panelCamiones);
+            this.grpBoxCamiones.Location = new System.Drawing.Point(20, 248);
+            this.grpBoxCamiones.Name = "grpBoxCamiones";
+            this.grpBoxCamiones.Size = new System.Drawing.Size(432, 176);
+            this.grpBoxCamiones.TabIndex = 1;
+            this.grpBoxCamiones.TabStop = false;
+            this.grpBoxCamiones.Text = "Caminoes";
+            // 
+            // grpBoxVehiculos
+            // 
+            this.grpBoxVehiculos.Controls.Add(this.panelVehiculos);
+            this.grpBoxVehiculos.Location = new System.Drawing.Point(487, 26);
+            this.grpBoxVehiculos.Name = "grpBoxVehiculos";
+            this.grpBoxVehiculos.Size = new System.Drawing.Size(475, 398);
+            this.grpBoxVehiculos.TabIndex = 2;
+            this.grpBoxVehiculos.TabStop = false;
+            this.grpBoxVehiculos.Text = "Vehiculos";
+            // 
+            // panelMotos
+            // 
+            this.panelMotos.ColumnCount = 2;
+            this.panelMotos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelMotos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelMotos.Location = new System.Drawing.Point(5, 17);
+            this.panelMotos.Name = "panelMotos";
+            this.panelMotos.RowCount = 2;
+            this.panelMotos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelMotos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelMotos.Size = new System.Drawing.Size(417, 159);
+            this.panelMotos.TabIndex = 0;
+            // 
+            // panelCamiones
+            // 
+            this.panelCamiones.ColumnCount = 2;
+            this.panelCamiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCamiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCamiones.Location = new System.Drawing.Point(5, 16);
+            this.panelCamiones.Name = "panelCamiones";
+            this.panelCamiones.RowCount = 2;
+            this.panelCamiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCamiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCamiones.Size = new System.Drawing.Size(416, 159);
+            this.panelCamiones.TabIndex = 0;
+            // 
+            // panelVehiculos
+            // 
+            this.panelVehiculos.ColumnCount = 2;
+            this.panelVehiculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelVehiculos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelVehiculos.Location = new System.Drawing.Point(9, 18);
+            this.panelVehiculos.Name = "panelVehiculos";
+            this.panelVehiculos.RowCount = 2;
+            this.panelVehiculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelVehiculos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelVehiculos.Size = new System.Drawing.Size(465, 378);
+            this.panelVehiculos.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 447);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 33);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Liberar parqueo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // IngresoCarro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 307);
+            this.ClientSize = new System.Drawing.Size(1027, 658);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnIngresarParqueo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "IngresoCarro";
             this.Text = "IngresoCarro";
+            this.Load += new System.EventHandler(this.IngresoCarro_Load);
+            this.panel1.ResumeLayout(false);
+            this.grpBoxMotos.ResumeLayout(false);
+            this.grpBoxCamiones.ResumeLayout(false);
+            this.grpBoxVehiculos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +213,13 @@
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnIngresarParqueo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox grpBoxVehiculos;
+        private System.Windows.Forms.GroupBox grpBoxCamiones;
+        private System.Windows.Forms.GroupBox grpBoxMotos;
+        private System.Windows.Forms.TableLayoutPanel panelMotos;
+        private System.Windows.Forms.TableLayoutPanel panelCamiones;
+        private System.Windows.Forms.TableLayoutPanel panelVehiculos;
+        private System.Windows.Forms.Button button1;
     }
 }
