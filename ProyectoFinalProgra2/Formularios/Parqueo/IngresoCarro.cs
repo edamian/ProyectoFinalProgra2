@@ -27,18 +27,41 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
 
         private void btnIngresarParqueo_Click(object sender, EventArgs e)
         {
-            String placa = this.txtPlaca.Text;
+            Conexion conexion = new Conexion();
 
+            //Si carro ya existe
+
+            // si no crear carro y obtener id
+
+            //insertar registro en parqueo_espacio
+
+            String placa = this.txtPlaca.Text;
+            int tipo = 0;
+            switch(cboxTipoVehiculo.SelectedItem.ToString())
+            {
+                case "Motocicleta":
+                    tipo = 1;
+                    break;
+                case "Camion":
+                    tipo = 2;
+                    break;
+                case "Vehiculo":
+                    tipo = 3;
+                    break;
+            }
+
+            String query = "INSERT INTO automovil (placa,tipo) VALUES ('"+ placa +"',"+tipo+")";
+            conexion.insertar(query);
         }
 
         private void IngresoCarro_Load(object sender, EventArgs e)
         {
             //parqueo motos
-            crearParqueo(3,7,this.panelMotos,"PM {0}","btn_moto_{0}{1}");
+            crearParqueo(3,7,this.panelMotos,"PM {0}","btn_moto_1_{0}{1}");
             //parqueo camiones
-            crearParqueo(2, 7, this.panelCamiones, "PC {0}", "btn_camion_{0}{1}");
+            crearParqueo(2, 7, this.panelCamiones, "PC {0}", "btn_camion_2_{0}{1}");
             //parqueo vehiculos
-            crearParqueo(7, 5, this.panelVehiculos, "PV {0}", "btn_vehiculo_{0}{1}");
+            crearParqueo(7, 5, this.panelVehiculos, "PV {0}", "btn_vehiculo_3_{0}{1}");
         }
 
         private void crearParqueo(int fila, int columna,  TableLayoutPanel panel, String texto, String nombre)
@@ -58,10 +81,11 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
             {
                 panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100 / fila));
             }
+
             int posicion = 0;
+
             for(int i =0; i<fila; i++)
             {
-                
                 for(int j=0; j< columna; j++)
                 {
                     posicion++;
@@ -74,19 +98,42 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 }
             }
 
+            panel.MaximumSize = new Size(panel.Width, panel.Height);
+            panel.AutoScroll = true;
+
         }
 
         private void obtenerParqueoBoton(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            nombreBoton = btn.Name;
-            btn.Enabled = false;
+            if(nombreBoton.Equals(String.Empty))
+            {
+                Button btn = (Button)sender;
+                nombreBoton = btn.Name;
+                String[] splitNombre = btn.Name.Split('_');
+                
+               foreach(var item in splitNombre)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine();
+                Console.WriteLine(splitNombre[2]);
+                btn.Enabled = false;
+
+            } else
+            {
+                MessageBox.Show("Debe liberar el espacio antes de seleccionar otro!","Alerta");
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Button foundButton = this.Controls.Find(nombreBoton, true).FirstOrDefault() as Button;
-            foundButton.Enabled = true;
+            if(!nombreBoton.Equals(String.Empty))
+            {
+                Button foundButton = this.Controls.Find(nombreBoton, true).FirstOrDefault() as Button;
+                nombreBoton = String.Empty;
+                foundButton.Enabled = true;
+            }
         }
     }
 }

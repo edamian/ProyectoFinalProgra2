@@ -23,5 +23,9 @@ namespace ProyectoFinalProgra2.Modelos
             Placa = placa;
         }
 
+        public Carro(String placa)
+        {
+            Placa = placa;
+        }
     }
 }
