@@ -7,16 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using ProyectoFinalProgra2.Controladores;
+using ProyectoFinalProgra2.Modelos;
 
 namespace ProyectoFinalProgra2.Formularios.Parqueo
 {
     public partial class IngresoCarro : Form
     {
         String nombreBoton = String.Empty;
-
+        int idParqueo = 0;
+        CarroControlador cc = new CarroControlador();
+        ParqueoAutoControlador pac = new ParqueoAutoControlador();
+        String obtenerParqueos = "SELECT espacio FROM auto_parqueo WHERE fecha_entrada = '2018-05-16'";
+        List<String> listaParqueosOcupados = null;
         public IngresoCarro()
         {
             InitializeComponent();
+            listaParqueosOcupados = pac.ObtenerParqueosOcupados(obtenerParqueos);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -27,17 +35,13 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
 
         private void btnIngresarParqueo_Click(object sender, EventArgs e)
         {
-            Conexion conexion = new Conexion();
-
-            //Si carro ya existe
-
-            // si no crear carro y obtener id
-
-            //insertar registro en parqueo_espacio
-
             String placa = this.txtPlaca.Text;
             int tipo = 0;
-            switch(cboxTipoVehiculo.SelectedItem.ToString())
+            long idCarroDB = 0 ;
+            
+            String espacioEstacionamiento = nombreBoton;
+
+            switch (cboxTipoVehiculo.SelectedItem.ToString())
             {
                 case "Motocicleta":
                     tipo = 1;
@@ -48,10 +52,29 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 case "Vehiculo":
                     tipo = 3;
                     break;
+                default :
+                    tipo = 0;
+                    break;
             }
 
-            String query = "INSERT INTO automovil (placa,tipo) VALUES ('"+ placa +"',"+tipo+")";
-            conexion.insertar(query);
+            //queries
+            String verificarCarro = "SELECT * FROM automovil WHERE placa = '" + placa + "'";
+            String nuevoCarro = "INSERT INTO automovil (placa,tipo) VALUES ('" + placa + "'," + tipo + ")";
+            
+            Carro carro = cc.Obtener(verificarCarro);
+            String insertarEspacioParqueo = String.Empty;
+             if (carro.IdCarro == 0)
+            {
+                idCarroDB = cc.Insertar(nuevoCarro);
+                insertarEspacioParqueo = "INSERT INTO auto_parqueo(id_parqueo,espacio,id_auto,fecha_entrada,hora_entrada,hora_salida,tarifa,ocupado) " +
+                " VALUES (" + idParqueo + ",'" + nombreBoton + "'," + idCarroDB + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("HH:mm:ss")+ "',null,1.5,1)";
+            } else
+            {
+                insertarEspacioParqueo = "INSERT INTO auto_parqueo(id_parqueo,espacio,id_auto,fecha_entrada,hora_entrada,hora_salida,tarifa,ocupado) " +
+                " VALUES (" + idParqueo + ",'" + nombreBoton + "'," + carro.IdCarro + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("HH:mm:ss") + "',null,1.5,1)";
+            }
+            Console.WriteLine(insertarEspacioParqueo);
+           pac.Insertar(insertarEspacioParqueo);
         }
 
         private void IngresoCarro_Load(object sender, EventArgs e)
@@ -66,6 +89,7 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
 
         private void crearParqueo(int fila, int columna,  TableLayoutPanel panel, String texto, String nombre)
         {
+
             panel.ColumnCount = columna;
             panel.RowCount = fila;
 
@@ -90,8 +114,9 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 {
                     posicion++;
                     Button btnTemp = new Button();
-                    btnTemp.Text = string.Format(texto, posicion);
                     btnTemp.Name = string.Format(nombre, i, j);
+                    btnTemp.Text = string.Format(texto, posicion);
+                    btnTemp.Enabled = this.estaOcupado(string.Format(nombre, i, j));
                     btnTemp.Click += obtenerParqueoBoton;
                     btnTemp.Dock = DockStyle.Fill;
                     panel.Controls.Add(btnTemp, j, i);
@@ -103,6 +128,20 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
 
         }
 
+        private bool estaOcupado(String valor)
+        {
+            bool restultado = true;
+            foreach (String val in listaParqueosOcupados)
+            {
+                if (val.Equals(valor))
+                {
+                    restultado = false;
+                    //return false;
+                    //esOcupado = false;
+                }
+            }
+            return restultado;
+        }
         private void obtenerParqueoBoton(object sender, EventArgs e)
         {
             if(nombreBoton.Equals(String.Empty))
@@ -115,8 +154,8 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 {
                     Console.WriteLine(item);
                 }
-                Console.WriteLine();
-                Console.WriteLine(splitNombre[2]);
+
+                idParqueo = int.Parse(splitNombre[2]);
                 btn.Enabled = false;
 
             } else
@@ -132,6 +171,7 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
             {
                 Button foundButton = this.Controls.Find(nombreBoton, true).FirstOrDefault() as Button;
                 nombreBoton = String.Empty;
+                idParqueo = 0;
                 foundButton.Enabled = true;
             }
         }

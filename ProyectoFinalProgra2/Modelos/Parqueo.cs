@@ -9,21 +9,27 @@ namespace ProyectoFinalProgra2.Modelos
     class Parqueo
     {
         public int Id { get; set; }
-        public int Lugares { get; set; }
-        public String Nombre { get; set; }
+        public int Tipo { get; set; }
+        public Decimal Espacios { get; set; }
 
         public Parqueo ()
         {
             Id = 0;
-            Lugares = 0;
-            Nombre = String.Empty;
+            Tipo = 0;
+            Espacios = 0;
         }
 
-        public Parqueo(int id, int lugares, String nombre)
+        public Parqueo(int id, int tipo, decimal espacios)
         {
             Id = id;
-            Lugares = lugares;
-            Nombre = nombre;
+            Tipo = tipo;
+            Espacios = espacios;
+        }
+
+        public Parqueo(int id, int tipo)
+        {
+            Tipo = id;
+            Espacios = tipo;
         }
     }
 }

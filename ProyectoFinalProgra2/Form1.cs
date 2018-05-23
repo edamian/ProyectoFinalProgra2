@@ -34,5 +34,11 @@ namespace ProyectoFinalProgra2
             IngresoCarro ic = new IngresoCarro();
             ic.Show();
         }
+
+        private void salidaParqueoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSalidaCarro sc = new frmSalidaCarro();
+            sc.Show();
+        }
     }
 }

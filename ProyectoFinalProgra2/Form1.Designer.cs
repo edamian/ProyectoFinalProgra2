@@ -32,9 +32,9 @@
             this.carrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearParqueoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresoCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salidaParqueoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salidaParqueoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.semanalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,21 +66,28 @@
             // crearParqueoToolStripMenuItem
             // 
             this.crearParqueoToolStripMenuItem.Name = "crearParqueoToolStripMenuItem";
-            this.crearParqueoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.crearParqueoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.crearParqueoToolStripMenuItem.Text = "Crear parqueo";
             this.crearParqueoToolStripMenuItem.Click += new System.EventHandler(this.crearParqueoToolStripMenuItem_Click);
             // 
             // ingresoCarroToolStripMenuItem
             // 
             this.ingresoCarroToolStripMenuItem.Name = "ingresoCarroToolStripMenuItem";
-            this.ingresoCarroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ingresoCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ingresoCarroToolStripMenuItem.Text = "Ingreso carro";
             this.ingresoCarroToolStripMenuItem.Click += new System.EventHandler(this.ingresoCarroToolStripMenuItem_Click);
+            // 
+            // salidaParqueoToolStripMenuItem
+            // 
+            this.salidaParqueoToolStripMenuItem.Name = "salidaParqueoToolStripMenuItem";
+            this.salidaParqueoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salidaParqueoToolStripMenuItem.Text = "Salida parqueo";
+            this.salidaParqueoToolStripMenuItem.Click += new System.EventHandler(this.salidaParqueoToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // parqueToolStripMenuItem
@@ -94,28 +101,22 @@
             this.parqueToolStripMenuItem.Text = "Facturacion";
             this.parqueToolStripMenuItem.Click += new System.EventHandler(this.parqueToolStripMenuItem_Click);
             // 
-            // salidaParqueoToolStripMenuItem
-            // 
-            this.salidaParqueoToolStripMenuItem.Name = "salidaParqueoToolStripMenuItem";
-            this.salidaParqueoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.salidaParqueoToolStripMenuItem.Text = "Salida parqueo";
-            // 
             // diaToolStripMenuItem
             // 
             this.diaToolStripMenuItem.Name = "diaToolStripMenuItem";
-            this.diaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.diaToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.diaToolStripMenuItem.Text = "Dia";
             // 
             // semanalToolStripMenuItem
             // 
             this.semanalToolStripMenuItem.Name = "semanalToolStripMenuItem";
-            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.semanalToolStripMenuItem.Text = "Semanal";
             // 
             // mensualToolStripMenuItem
             // 
             this.mensualToolStripMenuItem.Name = "mensualToolStripMenuItem";
-            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.mensualToolStripMenuItem.Text = "Mensual";
             // 
             // Form1

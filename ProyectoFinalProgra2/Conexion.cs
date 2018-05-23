@@ -33,7 +33,7 @@ namespace ProyectoFinalProgra2
             conexion = new MySqlConnection(cadenaCon);
         }
 
-        private bool abrirCon()
+        public bool abrirCon()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace ProyectoFinalProgra2
             }
         }
 
-        private bool cerrarCon()
+        public bool cerrarCon()
         {
             try
             {
@@ -67,47 +67,9 @@ namespace ProyectoFinalProgra2
             }
         }
 
-        /* metodos crud*/
-        public long insertar(String query)
+        public MySqlConnection obtenerConexion()
         {
-            if(this.abrirCon())
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                cmd.ExecuteNonQuery();
-                return cmd.LastInsertedId;
-                this.cerrarCon();
-            }
+            return this.conexion;
         }
-
-        public void actualizar(String query)
-        {
-            if(this.abrirCon())
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                cmd.ExecuteNonQuery();
-                this.cerrarCon();
-            }
-        }
-
-        public void borrar(String query)
-        {
-            if(this.abrirCon())
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                cmd.ExecuteNonQuery();
-                this.cerrarCon();
-            }
-        }
-
-        /*public MySqlDataReader consultar(String query)
-        {
-            if(this.abrirCon())
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                return dr;       
-                //cerrarCon();
-            }
-        }*/
     }
 }

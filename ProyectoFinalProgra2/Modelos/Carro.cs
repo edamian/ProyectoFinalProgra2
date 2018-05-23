@@ -27,5 +27,10 @@ namespace ProyectoFinalProgra2.Modelos
         {
             Placa = placa;
         }
+
+        public override string ToString()
+        {
+            return "Id = " + IdCarro + " Placa= " + Placa;
+        }
     }
 }
