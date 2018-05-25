@@ -26,7 +26,7 @@ namespace ProyectoFinalProgra2.Controladores
         public long Insertar(string query)
         {
             long id = 0;
-            if(conexion.abrirCon())
+            if(conexion.abrirCon() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
                 cmd.ExecuteNonQuery();
@@ -44,7 +44,7 @@ namespace ProyectoFinalProgra2.Controladores
         public Carro Obtener(string query)
         {
             Carro tmp = new Carro();
-            if(conexion.abrirCon())
+            if(conexion.abrirCon() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -53,6 +53,7 @@ namespace ProyectoFinalProgra2.Controladores
                     tmp.IdCarro = reader.GetInt32("id");
                     tmp.Placa = reader.GetString("placa");
                 }
+                conexion.cerrarCon();
             }
             return tmp;
         }

@@ -19,12 +19,13 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
         int idParqueo = 0;
         CarroControlador cc = new CarroControlador();
         ParqueoAutoControlador pac = new ParqueoAutoControlador();
-        String obtenerParqueos = "SELECT espacio FROM auto_parqueo WHERE fecha_entrada = '2018-05-16'";
+        String obtenerParqueos = "SELECT espacio FROM auto_parqueo WHERE fecha_entrada = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and ocupado = 1";
         List<String> listaParqueosOcupados = null;
+
         public IngresoCarro()
         {
             InitializeComponent();
-            listaParqueosOcupados = pac.ObtenerParqueosOcupados(obtenerParqueos);
+            cargarListaParqueosOcupados();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -74,13 +75,21 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 " VALUES (" + idParqueo + ",'" + nombreBoton + "'," + carro.IdCarro + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToString("HH:mm:ss") + "',null,1.5,1)";
             }
             Console.WriteLine(insertarEspacioParqueo);
-           pac.Insertar(insertarEspacioParqueo);
+            pac.Insertar(insertarEspacioParqueo);
+
+            liberarParqueo();
+            cargarParqueos();
         }
 
         private void IngresoCarro_Load(object sender, EventArgs e)
         {
+            cargarParqueos();
+        }
+
+        private void cargarParqueos()
+        {
             //parqueo motos
-            crearParqueo(3,7,this.panelMotos,"PM {0}","btn_moto_1_{0}{1}");
+            crearParqueo(3, 7, this.panelMotos, "PM {0}", "btn_moto_1_{0}{1}");
             //parqueo camiones
             crearParqueo(2, 7, this.panelCamiones, "PC {0}", "btn_camion_2_{0}{1}");
             //parqueo vehiculos
@@ -89,6 +98,11 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
 
         private void crearParqueo(int fila, int columna,  TableLayoutPanel panel, String texto, String nombre)
         {
+            cargarListaParqueosOcupados();
+            while (panel.Controls.Count > 0)
+            {
+                panel.Controls[0].Dispose();
+            }
 
             panel.ColumnCount = columna;
             panel.RowCount = fila;
@@ -136,8 +150,6 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
                 if (val.Equals(valor))
                 {
                     restultado = false;
-                    //return false;
-                    //esOcupado = false;
                 }
             }
             return restultado;
@@ -169,11 +181,26 @@ namespace ProyectoFinalProgra2.Formularios.Parqueo
         {
             if(!nombreBoton.Equals(String.Empty))
             {
-                Button foundButton = this.Controls.Find(nombreBoton, true).FirstOrDefault() as Button;
-                nombreBoton = String.Empty;
-                idParqueo = 0;
-                foundButton.Enabled = true;
+                liberarParqueo();
             }
+        }
+
+        private void liberarParqueo()
+        {
+            Button foundButton = this.Controls.Find(nombreBoton, true).FirstOrDefault() as Button;
+            nombreBoton = String.Empty;
+            idParqueo = 0;
+            foundButton.Enabled = true;
+        }
+
+        private void cargarListaParqueosOcupados()
+        {
+            listaParqueosOcupados = pac.ObtenerParqueosOcupados(obtenerParqueos);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

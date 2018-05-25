@@ -30,7 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.carrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crearParqueoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresoCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salidaParqueoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,20 +54,12 @@
             // carrosToolStripMenuItem
             // 
             this.carrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crearParqueoToolStripMenuItem,
             this.ingresoCarroToolStripMenuItem,
             this.salidaParqueoToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.carrosToolStripMenuItem.Name = "carrosToolStripMenuItem";
             this.carrosToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.carrosToolStripMenuItem.Text = "Parqueos";
-            // 
-            // crearParqueoToolStripMenuItem
-            // 
-            this.crearParqueoToolStripMenuItem.Name = "crearParqueoToolStripMenuItem";
-            this.crearParqueoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.crearParqueoToolStripMenuItem.Text = "Crear parqueo";
-            this.crearParqueoToolStripMenuItem.Click += new System.EventHandler(this.crearParqueoToolStripMenuItem_Click);
             // 
             // ingresoCarroToolStripMenuItem
             // 
@@ -104,19 +95,19 @@
             // diaToolStripMenuItem
             // 
             this.diaToolStripMenuItem.Name = "diaToolStripMenuItem";
-            this.diaToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.diaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.diaToolStripMenuItem.Text = "Dia";
             // 
             // semanalToolStripMenuItem
             // 
             this.semanalToolStripMenuItem.Name = "semanalToolStripMenuItem";
-            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.semanalToolStripMenuItem.Text = "Semanal";
             // 
             // mensualToolStripMenuItem
             // 
             this.mensualToolStripMenuItem.Name = "mensualToolStripMenuItem";
-            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mensualToolStripMenuItem.Text = "Mensual";
             // 
             // Form1
@@ -138,7 +129,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem carrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem crearParqueoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresoCarroToolStripMenuItem;

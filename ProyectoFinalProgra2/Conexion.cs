@@ -72,4 +72,12 @@ namespace ProyectoFinalProgra2
             return this.conexion;
         }
     }
+
+    /*-- liberar parqueo
+update auto_parqueo set ocupado = 0 where id_auto = 1 and fecha_entrada = '';
+
+-- dia
+select SUM(tarifa*(TIMEDIFF(hora_salida, hora_entrada))) from auto_parqueo where fecha_entrada '';
+-- semana o mes
+select SUM(tarifa*(TIMEDIFF(hora_salida, hora_entrada))) from auto_parqueo where fecha_entrada between '' and '';*/
 }

@@ -26,7 +26,7 @@ namespace ProyectoFinalProgra2.Controladores
         {
             long id = 0;
 
-            if(conexion.abrirCon())
+            if(conexion.abrirCon() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
                 cmd.ExecuteNonQuery();
@@ -50,7 +50,7 @@ namespace ProyectoFinalProgra2.Controladores
         public List<String> ObtenerParqueosOcupados(String query)
         {
             List<String> lista = new List<string>();
-            if (conexion.abrirCon())
+            if (conexion.abrirCon() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
                 MySqlDataReader r = cmd.ExecuteReader();
@@ -59,6 +59,7 @@ namespace ProyectoFinalProgra2.Controladores
                     lista.Add(r.GetString(0));
                 }
                 r.Close();
+                conexion.cerrarCon();
             }
             return lista;
         }
@@ -73,7 +74,6 @@ namespace ProyectoFinalProgra2.Controladores
                     MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
                     cmd.ExecuteNonQuery();
                     conexion.cerrarCon();
-
                 } catch (MySqlException ex)
                 {
                     sale = false;
@@ -81,6 +81,22 @@ namespace ProyectoFinalProgra2.Controladores
                 }
             }
             return sale;
+        }
+
+        public decimal obtenerMontoFac(String query)
+        {
+            decimal valor = 0;
+            if(conexion.abrirCon() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, conexion.obtenerConexion());
+                MySqlDataReader r = cmd.ExecuteReader();
+                while(r.Read())
+                {
+                    valor = r.GetDecimal(0);
+                }
+                conexion.cerrarCon();
+            }
+            return valor;
         }
     }
 }
